@@ -1,16 +1,44 @@
 <template>
-  <todo-list></todo-list>
+  <div>
+    <todo-list
+      v-for="(todo, index) in todos"
+      v-bind:todo="todo" v-bind:index="index" :key="todo.id"></todo-list>
+  </div>
 </template>
 
 <script>
+
 import TodoList from './components/TodoList';
 
 export default {
-  name: 'App',
+  name: 'app',
   components: {
     TodoList,
   },
+  // data function avails data to the template
+  data() {
+    return {
+      todos: [{
+        title: 'Todo A',
+        project: 'Project A',
+        done: false,
+      }, {
+        title: 'Todo B',
+        project: 'Project B',
+        done: true,
+      }, {
+        title: 'Todo C',
+        project: 'Project C',
+        done: false,
+      }, {
+        title: 'Todo D',
+        project: 'Project D',
+        done: false,
+      }],
+    };
+  },
 };
+
 </script>
 
 <style>
@@ -21,5 +49,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
+};
+
 </style>
