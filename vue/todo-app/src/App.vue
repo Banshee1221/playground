@@ -1,19 +1,20 @@
 <template>
   <div>
-    <todo-list
-      v-for="(todo, index) in todos"
-      v-bind:todo="todo" v-bind:index="index" :key="todo.id"></todo-list>
+    <todo-list v-bind:todos="todos"></todo-list>
+    <create-todo v-on:create-todo="addTodo"></create-todo>
   </div>
 </template>
 
 <script>
 
 import TodoList from './components/TodoList';
+import CreateTodo from './components/CreateTodo';
 
 export default {
   name: 'app',
   components: {
     TodoList,
+    CreateTodo,
   },
   // data function avails data to the template
   data() {
@@ -36,6 +37,15 @@ export default {
         done: false,
       }],
     };
+  },
+  methods: {
+    addTodo(objects) {
+      this.todos.push({
+        title: objects.title,
+        project: objects.project,
+        done: objects.done,
+      });
+    },
   },
 };
 
