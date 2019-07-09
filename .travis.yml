@@ -1,0 +1,22 @@
+services: docker
+env:
+  TRAVIS_BUILD_DIR="travis"
+
+before_install:
+  - docker -v
+  - cd travis
+install:
+  # Start the docker stuff
+  - docker-compose up -d
+  - sleep 10
+# script:
+#   # Seed database
+#   - docker-compose exec web sh -c "php artisan migrate --seed"
+#   # Run tests
+#   - docker-compose exec web sh -c "composer test"
+#   # Build cli container
+#   - docker build -t "bkuhl/laravel-starter:cli" -f infrastructure/cli/Dockerfile .
+# after_success:
+#   # Deployable image tags must be in format: web-latest, cli-latest, nginx-latest
+#   - if [[ $TRAVIS_BRANCH == 'master' ]]; then docker tag "bkuhl/laravel-starter:web" "bkuhl/laravel-starter:web-latest" && docker push "bkuhl/laravel-starter:web-latest" ; fi
+#  - if [[ $TRAVIS_BRANCH == 'master' ]]; then docker tag "bkuhl/laravel-starter:cli" "bkuhl/laravel-starter:cli-latest" && docker push "bkuhl/laravel-starter:cli-latest" ; fi

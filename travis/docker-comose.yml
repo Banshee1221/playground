@@ -1,0 +1,38 @@
+version: "3.4"
+
+services:
+
+  headnode:
+    build:
+      context: './headnode/.'
+      network: host
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.2
+    ports:
+      - '80'
+      - '443'
+      - '60000-60100'
+      - '6817'
+      - '22'
+
+  computenode:
+    build:
+      context: './headnode/.'
+      network: host
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.3
+    ports:
+      - '80'
+      - '443'
+      - '60000-60100'
+      - '6817'
+      - '22'
+
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
