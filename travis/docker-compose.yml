@@ -16,7 +16,7 @@ services:
       - '6817'
       - '22'
     volumes:
-      - '../travis-docker-compise-volume-test:/ansible'
+      - '../travis-docker-compose-volume-test/:/ansible'
 
   computenode:
     build:
