@@ -15,10 +15,12 @@ services:
       - '60000-60100'
       - '6817'
       - '22'
+    volumes:
+      - '../travis-docker-compise-volume-test:/ansible'
 
   computenode:
     build:
-      context: './headnode/.'
+      context: './computenode/.'
       network: host
     networks:
       vpcbr:
