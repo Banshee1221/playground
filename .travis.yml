@@ -5,7 +5,7 @@ before_install:
 install:
   # Start the docker stuff
   - cd travis
-  - docker-compose up -d
+  - docker-compose up
   - sleep 10
 # script:
 #   # Seed database
