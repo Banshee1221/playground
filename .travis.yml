@@ -1,6 +1,4 @@
 services: docker
-env:
-  TRAVIS_BUILD_DIR="travis"
 
 before_install:
   - docker -v
